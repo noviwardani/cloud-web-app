@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Architecture & Data Analytics Dashboard - Final Project</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* [UI/UX] Modern Clean Design untuk Presentasi Akademis */
+        :root {
+            --primary-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --academic-blue: #0d6efd;
+            --secure-green: #198754;
+            --data-purple: #6f42c1;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 50px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--academic-blue), var(--data-purple));
+            color: white;
+            padding: 3rem 1rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-custom {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            height: 100%;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+        }
+
+        .arch-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 15px;
+        }
+
+        .arch-step {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            position: relative;
+        }
+
+        .arch-arrow {
+            font-size: 2rem;
+            color: #adb5bd;
+        }
+
+        .badge-academic {
+            font-size: 0.9em;
+            padding: 0.5em 1em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .arch-arrow { transform: rotate(90deg); margin: 10px 0; }
+            .arch-diagram { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section text-center mb-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Cloud Data Center & Analytics</h1>
+            <h3 class="h5 opacity-75">Tugas Akhir: Desain dan Arsitektur Pusat Data</h3>
+            <p class="mt-3">
+                <span class="badge bg-light text-dark badge-academic me-2">
+                    <i class="fas fa-university"></i> Program Studi Sains Data
+                </span>
+                <span class="badge bg-success badge-academic me-2">
+                    <i class="fas fa-lock"></i> HTTPS Secured (SSL)
+                </span>
+                <span class="badge bg-warning text-dark badge-academic">
+                    <i class="fas fa-cloud"></i> GitHub Pages (PaaS)
+                </span>
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="introduction" class="mb-5">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card card-custom p-4">
+                        <h4 class="text-danger"><i class="fas fa-server"></i> Masalah Konvensional (On-Premise)</h4>
+                        <p class="text-muted">
+                            Pengelolaan pusat data fisik membutuhkan investasi CAPEX (Capital Expenditure) tinggi untuk hardware, pendinginan, dan listrik. Skalabilitas terbatas pada fisik server yang tersedia, dan risiko downtime tinggi jika terjadi kegagalan hardware tunggal (Single Point of Failure).
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card card-custom p-4">
+                        <h4 class="text-primary"><i class="fas fa-cloud-upload-alt"></i> Solusi Cloud Computing</h4>
+                        <p class="text-muted">
+                            Mengubah model ke OPEX (Operational Expenditure). Menggunakan resource yang diabstraksi (Virtualization) memungkinkan <strong>Elasticity</strong> (naik/turun otomatis) dan <strong>High Availability</strong>. Proyek ini mendemonstrasikan model PaaS di mana infrastruktur diurus oleh provider (GitHub).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="mb-5">
+            <h3 class="border-bottom pb-2 mb-4">Arsitektur Pusat Data & Alur Request</h3>
+            <div class="card card-custom p-4">
+                <div class="arch-diagram mb-4">
+                    <div class="arch-step">
+                        <i class="fas fa-user fa-3x text-secondary mb-2"></i>
+                        <br><strong>End User</strong><br><small>Request via Browser</small>
+                    </div>
+                    <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                    <div class="arch-step">
+                        <i class="fas fa-globe fa-3x text-primary mb-2"></i>
+                        <br><strong>Internet</strong><br><small>HTTPS / TLS 1.3</small>
+                    </div>
+                    <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                    <div class="arch-step">
+                        <i class="fas fa-network-wired fa-3x text-success mb-2"></i>
+                        <br><strong>CDN Layer</strong><br><small>Edge Locations</small>
+                    </div>
+                    <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                    <div class="arch-step">
+                        <i class="fas fa-server fa-3x text-dark mb-2"></i>
+                        <br><strong>GitHub PaaS</strong><br><small>Static Hosting</small>
+                    </div>
+                    <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                    <div class="arch-step">
+                        <i class="fas fa-laptop-code fa-3x text-info mb-2"></i>
+                        <br><strong>Browser Client</strong><br><small>Data Visualization</small>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <strong><i class="fas fa-info-circle"></i> Catatan Arsitektur Data Center:</strong>
+                    <ul class="mb-0 mt-2">
+                        <li><strong>Scalability:</strong> GitHub Pages menggunakan CDN (Fastly) yang mendistribusikan konten ke berbagai Edge Server di seluruh dunia.</li>
+                        <li><strong>Fault Tolerance:</strong> Jika satu server down, traffic dialihkan ke node lain dalam jaringan CDN.</li>
+                        <li><strong>Resource Abstraction:</strong> Kita tidak perlu memikirkan OS server, patching, atau kabel jaringan. Fokus hanya pada aplikasi/data.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="mb-5">
+            <h3 class="border-bottom pb-2 mb-4">Real-time Data Center Analytics (Simulation)</h3>
+            <div class="row">
+                <div class="col-lg-8 mb-4">
+                    <div class="card card-custom p-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-chart-line"></i> Inbound Network Traffic (Mbps)</h5>
+                        <p class="text-muted small">Monitoring latency dan throughput jaringan secara real-time.</p>
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="card card-custom p-3">
+                        <h5 class="card-title text-success"><i class="fas fa-chart-pie"></i> Load Balancer Distribution</h5>
+                        <p class="text-muted small">Distribusi beban request ke node server (Region Asia/US/EU).</p>
+                        <canvas id="loadChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="col-12 mb-4">
+                    <div class="card card-custom p-3">
+                        <h5 class="card-title text-warning"><i class="fas fa-memory"></i> Cluster Resource Usage (CPU vs RAM)</h5>
+                        <p class="text-muted small">Analisis efisiensi penggunaan resource pada container virtual.</p>
+                        <canvas id="resourceChart" height="80"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="security" class="mb-5">
+            <h3 class="border-bottom pb-2 mb-4">Implementasi Keamanan Cloud</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-custom h-100 border-success border-2">
+                        <div class="card-body text-center">
+                            <i class="fas fa-lock fa-3x text-success mb-3"></i>
+                            <h5>SSL/TLS Encryption</h5>
+                            <p class="small text-muted">Seluruh komunikasi data antara user dan server dienkripsi menggunakan protokol HTTPS. Mencegah serangan <em>Man-in-the-Middle</em>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-custom h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                            <h5>Platform Isolation</h5>
+                            <p class="small text-muted">Aplikasi berjalan di lingkungan <em>Sandbox</em> browser (Client-side), tidak memiliki akses langsung ke backend database, meminimalisir risiko injeksi SQL.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-custom h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-handshake fa-3x text-warning mb-3"></i>
+                            <h5>Shared Responsibility</h5>
+                            <p class="small text-muted">
+                                <strong>Provider (GitHub):</strong> Mengamankan fisik, jaringan, dan OS.<br>
+                                <strong>User (Mahasiswa):</strong> Mengamankan kode, aset data, dan konfigurasi repositori.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="compliance" class="mb-5">
+            <div class="card card-custom bg-light">
+                <div class="card-body">
+                    <h4 class="mb-3">📌 Compliance Matrix (Mapping Ketentuan)</h4>
+                    <table class="table table-borderless table-striped">
+                        <thead>
+                            <tr>
+                                <th>Persyaratan Proyek</th>
+                                <th>Status</th>
+                                <th>Implementasi Teknis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tema Cloud & Data Center</td>
+                                <td><span class="badge bg-success">Valid</span></td>
+                                <td>Penjelasan arsitektur, diagram alur, dan komparasi on-premise.</td>
+                            </tr>
+                            <tr>
+                                <td>Layanan PaaS</td>
+                                <td><span class="badge bg-success">Valid</span></td>
+                                <td>Deployment menggunakan GitHub Pages (Static Hosting Platform).</td>
+                            </tr>
+                            <tr>
+                                <td>Keamanan (Security)</td>
+                                <td><span class="badge bg-success">Valid</span></td>
+                                <td>Enforced HTTPS, No Backend Vulnerability, CDN Protection.</td>
+                            </tr>
+                            <tr>
+                                <td>Data Analytics</td>
+                                <td><span class="badge bg-success">Valid</span></td>
+                                <td>Dashboard interaktif menggunakan Chart.js dengan simulasi data real-time.</td>
+                            </tr>
+                            <tr>
+                                <td>Arsitektur Single File</td>
+                                <td><span class="badge bg-success">Valid</span></td>
+                                <td>Seluruh logika, styling, dan markup dalam 1 file HTML mandiri.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center py-4 border-top mt-5 bg-white">
+        <p class="mb-1 fw-bold">Disusun Oleh: [Nama Mahasiswa Placeholder]</p>
+        <p class="small text-muted mb-0">Program Studi Sains Data - Desain dan Arsitektur Pusat Data - 2024</p>
+        <p class="small text-muted">Powered by Bootstrap, Chart.js, & GitHub Pages Cloud Infrastructure</p>
+    </footer>
+
+    <script>
+        // Konfigurasi Chart.js Global
+        Chart.defaults.font.family = "'Segoe UI', 'Helvetica', sans-serif";
+        Chart.defaults.color = '#666';
+
+        // 1. Line Chart - Network Traffic Simulation
+        const ctxTraffic = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(ctxTraffic, {
+            type: 'line',
+            data: {
+                labels: ['10:00', '10:05', '10:10', '10:15', '10:20', '10:25'],
+                datasets: [{
+                    label: 'Inbound Traffic (MB)',
+                    data: [12, 19, 15, 25, 22, 30],
+                    borderColor: '#0d6efd',
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true } },
+                animation: { duration: 1000 }
+            }
+        });
+
+        // 2. Pie Chart - Load Balancer Distribution
+        const ctxLoad = document.getElementById('loadChart').getContext('2d');
+        const loadChart = new Chart(ctxLoad, {
+            type: 'doughnut',
+            data: {
+                labels: ['Asia Pacific (SG)', 'US East (N. Virginia)', 'Europe (London)'],
+                datasets: [{
+                    data: [45, 30, 25],
+                    backgroundColor: ['#198754', '#0d6efd', '#ffc107'],
+                    hoverOffset: 4
+                }]
+            }
+        });
+
+        // 3. Bar Chart - Resource Usage
+        const ctxResource = document.getElementById('resourceChart').getContext('2d');
+        const resourceChart = new Chart(ctxResource, {
+            type: 'bar',
+            data: {
+                labels: ['Node-01', 'Node-02', 'Node-03', 'Node-04'],
+                datasets: [
+                    {
+                        label: 'CPU Usage (%)',
+                        data: [65, 59, 80, 81],
+                        backgroundColor: '#6f42c1'
+                    },
+                    {
+                        label: 'RAM Usage (%)',
+                        data: [45, 70, 60, 55],
+                        backgroundColor: '#20c997'
+                    }
+                ]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, max: 100 } }
+            }
+        });
+
+        // [SIMULASI] Fungsi untuk update data chart secara real-time
+        // Ini mensimulasikan data stream yang masuk dari sensor pusat data
+        setInterval(() => {
+            // Update Traffic Chart
+            const newData = Math.floor(Math.random() * 50) + 10;
+            const newTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second:'2-digit' });
+            
+            // Hapus data lama, tambah data baru (Sliding Window)
+            trafficChart.data.labels.shift();
+            trafficChart.data.labels.push(newTime);
+            trafficChart.data.datasets[0].data.shift();
+            trafficChart.data.datasets[0].data.push(newData);
+            trafficChart.update();
+
+            // Update Resource Chart (Random Fluctuation)
+            resourceChart.data.datasets[0].data = resourceChart.data.datasets[0].data.map(() => Math.floor(Math.random() * 40) + 40);
+            resourceChart.update();
+
+        }, 3000); // Update setiap 3 detik
+    </script>
+</body>
+</html>
