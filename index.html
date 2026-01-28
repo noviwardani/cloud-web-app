@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Data Center Analytics Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Platform Cloud: GitHub Pages (PaaS) -->
+    <!-- Security Mechanism: HTTPS / SSL -->
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #eef2f0;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(20,108,67,0.9), rgba(20,108,67,0.9)),
+                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 90px 20px;
+        }
+
+        .section-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            color: #198754;
+            border-left: 6px solid #198754;
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        .arch-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .arch-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .arch-card i {
+            font-size: 36px;
+            color: #198754;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #1c1f23;
+            color: #cfd3d6;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero text-center">
+    <h1 class="fw-bold display-6">Cloud Data Center Analytics Platform</h1>
+    <p class="lead mt-3">
+        Web Application Berbasis Cloud (PaaS)<br>
+        Mata Kuliah <strong>Desain dan Arsitektur Pusat Data</strong>
+    </p>
+    <div class="mt-4">
+        <span class="badge bg-dark me-2"><i class="fa-solid fa-lock"></i> HTTPS / SSL</span>
+        <span class="badge bg-light text-dark"><i class="fa-solid fa-cloud"></i> Cloud PaaS</span>
+    </div>
+</section>
+
+<!-- LATAR BELAKANG -->
+<section class="container my-5">
+    <div class="section-wrapper">
+        <h3 class="section-title">Latar Belakang dan Permasalahan</h3>
+        <p>
+            Pusat data konvensional memiliki keterbatasan skalabilitas dan efisiensi.
+            Cloud computing menyediakan solusi melalui layanan berbasis PaaS
+            yang memungkinkan deployment aplikasi tanpa pengelolaan server fisik.
+        </p>
+    </div>
+</section>
+
+<!-- ARSITEKTUR -->
+<section class="container">
+    <div class="section-wrapper">
+        <h3 class="section-title">Alur Arsitektur Sistem Cloud</h3>
+
+        <div class="arch-container">
+            <div class="arch-card"><i class="fa-solid fa-user"></i><h6>User</h6></div>
+            <div class="arch-card"><i class="fa-solid fa-globe"></i><h6>Internet</h6></div>
+            <div class="arch-card"><i class="fa-solid fa-lock"></i><h6>HTTPS / SSL</h6></div>
+            <div class="arch-card"><i class="fa-solid fa-cloud"></i><h6>Cloud PaaS</h6></div>
+            <div class="arch-card"><i class="fa-solid fa-microchip"></i><h6>Data Processing</h6></div>
+            <div class="arch-card"><i class="fa-solid fa-chart-line"></i><h6>Web Visualization</h6></div>
+        </div>
+
+        <ul class="mt-4">
+            <li><strong>Layanan Cloud:</strong> Platform as a Service (PaaS)</li>
+            <li><strong>Keamanan:</strong> HTTPS / SSL</li>
+            <li><strong>Aplikasi:</strong> Web Application</li>
+            <li><strong>Sistem:</strong> Data Processing System</li>
+            <li><strong>Infrastruktur:</strong> Cloud Infrastructure</li>
+        </ul>
+    </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="container my-5">
+    <div class="section-wrapper">
+        <h3 class="section-title">Dashboard Analitik</h3>
+
+        <div class="row g-4">
+            <div class="col-md-4"><canvas id="traffic"></canvas></div>
+            <div class="col-md-4"><canvas id="resource"></canvas></div>
+            <div class="col-md-4"><canvas id="distribution"></canvas></div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center">
+    <p><strong>Nama Mahasiswa:</strong> Novi Ari Wardani</p>
+    <p><strong>NIM:</strong> 230320555</p>
+    <p>Program Studi Sains Data</p>
+    <p>Mata Kuliah Desain dan Arsitektur Pusat Data</p>
+    <p>Tahun 2026</p>
+</footer>
+
+<!-- SCRIPT (ANTI ERROR) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    new Chart(document.getElementById("traffic"), {
+        type: "line",
+        data: {
+            labels: ["Q1", "Q2", "Q3", "Q4"],
+            datasets: [{
+                label: "Cloud Traffic",
+                data: [200, 320, 280, 400]
+            }]
+        }
+    });
+
+    new Chart(document.getElementById("resource"), {
+        type: "bar",
+        data: {
+            labels: ["CPU", "Memory", "Storage"],
+            datasets: [{
+                label: "Usage (%)",
+                data: [65, 75, 85]
+            }]
+        }
+    });
+
+    new Chart(document.getElementById("distribution"), {
+        type: "pie",
+        data: {
+            labels: ["UI", "Analytics", "Visualization"],
+            datasets: [{
+                data: [45, 30, 25]
+            }]
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
